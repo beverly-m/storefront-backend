@@ -8,21 +8,21 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Products
 
-- Index
-- Show
-- Create [token required]
+- Index route: '/products' [GET]
+- Show route: '/products/:id' [GET]
+- Create route [token required]: '/products' [POST]
 - [OPTIONAL] Top 5 most popular products
 - [OPTIONAL] Products by category (args: product category)
 
 #### Users
 
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+- Index route [token required]: '/users' [GET]
+- Show route [token required]: '/users/:id' [GET]
+- Create route [token required]: '/users' [POST]
 
 #### Orders
 
-- Current Order by user (args: user id)[token required]
+- Current Order by user (args: user id)[token required]: '/orders/:user_id' [GET]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ## Data Shapes
@@ -48,3 +48,31 @@ These are the notes from a meeting with the frontend developer that describe wha
 - quantity of each product in the order
 - user_id
 - status of order (active or complete)
+
+## Database Tables
+
+#### Product Table
+
+- id: int [primary key]
+- name: varchar
+- price:
+
+#### User Table
+
+- id: int [primary key]
+- firstName: varchar
+- lastName: varchar
+- password: char
+
+#### Order Products Table
+
+- id: int [primary key]
+- order_id: int [foreign key to orders table]
+- product_id: int [foreign key to products table]
+- quantity: int
+
+#### Orders Table
+
+- id: int [primary key]
+- order_status: varchar
+- user_id: int [foreign key to users table]
