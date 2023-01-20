@@ -51,13 +51,13 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## Database Tables
 
-#### Product Table
+#### Products Table
 
 - id: int [primary key]
 - name: varchar
-- price:
+- price: numeric(5,2)
 
-#### User Table
+#### Users Table
 
 - id: int [primary key]
 - firstName: varchar
