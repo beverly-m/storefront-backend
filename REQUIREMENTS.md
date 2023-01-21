@@ -66,6 +66,8 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Order Products Table
 
+###### This table keeps record of the products purchased in an order along with their quantities. It is a join table between the orders and products table
+
 - id: int [primary key]
 - order_id: int [foreign key to orders table]
 - product_id: int [foreign key to products table]
@@ -74,5 +76,5 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Orders Table
 
 - id: int [primary key]
-- order_status: varchar
+- status: varchar
 - user_id: int [foreign key to users table]

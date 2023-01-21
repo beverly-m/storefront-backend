@@ -9,7 +9,7 @@ class ProductStore {
     async index() {
         try {
             const dbConn = await database_1.default.connect();
-            const query = 'SELECT * FROM employee';
+            const query = 'SELECT * FROM employees';
             const data = await dbConn.query(query);
             dbConn.release();
             console.log(data.rows);
