@@ -11,7 +11,7 @@ export type OrderProductExtended = {
     order_id : Number;
     product_id : Number;
     name : String;
-    price : Number;
+    price : String;
     quantity : Number;
 }
 

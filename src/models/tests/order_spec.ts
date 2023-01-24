@@ -43,8 +43,8 @@ describe("Order Model", () => {
         expect(result).toEqual(
             { order: {id: 1, status: 'active', user_id: 1}, 
             productsList: [
-                {order_id: 1, product_id: 1, name: 'quail', price: 5.50, quantity: 1}, 
-                {order_id: 1, product_id: 3, name: 'eggs(dozen)', price: 6.00, quantity: 1} 
+                {order_id: 1, product_id: 1, name: 'quail', price: '5.50', quantity: 1}, 
+                {order_id: 1, product_id: 3, name: 'eggs(dozen)', price: '6.00', quantity: 1} 
             ] 
             })
     })
