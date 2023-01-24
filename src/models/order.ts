@@ -1,15 +1,15 @@
 import Client from "../database";
-import { OrderProduct, OrderProductStore } from "./orderProduct";
+import { OrderProduct, OrderProductExtended, OrderProductStore } from "./orderProduct";
 
 export type Order = {
     id? : Number;
     status: string;
-    userId: Number;
+    user_id: Number;
 }
 
 export type OrderDetails = {
     order: Order,
-    productsList: OrderProduct[]
+    productsList: OrderProductExtended[]
 }
 
 export class OrderStore {
@@ -29,8 +29,21 @@ export class OrderStore {
         }
     }
 
+    async create(order: Order): Promise<Order> {
+        try {
+            const dbConn = await Client.connect();
+            const query = 'INSERT INTO orders(status, user_id) VALUES ($1, $2) RETURNING *';
+            const data = await dbConn.query(query, [order.status, order.user_id]);
+            dbConn.release();
+            console.log(data.rows[0]);
+            return data.rows[0];
+        } catch (error) {
+            throw new Error(`Could not create order. Error: ${error}`) 
+        }
+    }
+
 }
 
-const ordersql = new OrderStore;
-ordersql.show("3")
+// const ordersql = new OrderStore;
+// ordersql.show("1")
 // productsql.create({name: "Beans", price: 25})

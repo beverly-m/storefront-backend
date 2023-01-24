@@ -6,11 +6,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 const pg_1 = require("pg");
 dotenv_1.default.config();
-const { POSTGRES_HOST, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD } = process.env;
-const Client = new pg_1.Pool({
+const { ENV, POSTGRES_HOST, POSTGRES_DB, POSTGRES_TEST_DB, POSTGRES_USER, POSTGRES_PASSWORD } = process.env;
+console.log(`*********Development environment: ${ENV}`);
+let Client = new pg_1.Pool({
     host: POSTGRES_HOST,
     database: POSTGRES_DB,
     user: POSTGRES_USER,
     password: POSTGRES_PASSWORD,
 });
+// if (ENV === 'dev') {
+//     Client = new Pool({
+//     host: POSTGRES_HOST,
+//     database: POSTGRES_DB,
+//     user: POSTGRES_USER,
+//     password: POSTGRES_PASSWORD,
+// })
+// }
+if (ENV === 'test') {
+    Client = new pg_1.Pool({
+        host: POSTGRES_HOST,
+        database: POSTGRES_TEST_DB,
+        user: POSTGRES_USER,
+        password: POSTGRES_PASSWORD,
+    });
+}
 exports.default = Client;

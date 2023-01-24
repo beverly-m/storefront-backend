@@ -22,8 +22,21 @@ class OrderStore {
             throw new Error(`Could not retrieve order ${userId}. Error: ${error}`);
         }
     }
+    async create(order) {
+        try {
+            const dbConn = await database_1.default.connect();
+            const query = 'INSERT INTO orders(status, user_id) VALUES ($1, $2) RETURNING *';
+            const data = await dbConn.query(query, [order.status, order.user_id]);
+            dbConn.release();
+            console.log(data.rows[0]);
+            return data.rows[0];
+        }
+        catch (error) {
+            throw new Error(`Could not create order. Error: ${error}`);
+        }
+    }
 }
 exports.OrderStore = OrderStore;
-const ordersql = new OrderStore;
-ordersql.show("3");
+// const ordersql = new OrderStore;
+// ordersql.show("1")
 // productsql.create({name: "Beans", price: 25})

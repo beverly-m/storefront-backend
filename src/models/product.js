@@ -47,7 +47,7 @@ class ProductStore {
     }
 }
 exports.ProductStore = ProductStore;
-const productsql = new ProductStore;
-productsql.index();
-productsql.show("1");
+// const productsql = new ProductStore;
+// productsql.index()
+// productsql.show("1")
 // productsql.create({name: "Beans", price: 25})

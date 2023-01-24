@@ -46,9 +46,10 @@ export class ProductStore {
             throw new Error(`Could not create product ${newProduct.name}. Error: ${error}`)
         }
     }
+
 }
 
-const productsql = new ProductStore;
-productsql.index()
-productsql.show("1")
+// const productsql = new ProductStore;
+// productsql.index()
+// productsql.show("1")
 // productsql.create({name: "Beans", price: 25})

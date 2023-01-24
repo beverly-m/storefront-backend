@@ -12,7 +12,7 @@ const {
     POSTGRES_PASSWORD
 } = process.env;
 
-console.log(ENV)
+console.log(`*********Development environment: ${ENV}`)
 
 let Client = new Pool({
     host: POSTGRES_HOST,
