@@ -1,12 +1,12 @@
 import {Request, Response} from 'express'
-import { User, UserStore } from '../models/user'
+import { Product, ProductStore } from '../models/product'
 
-const user = new UserStore()
+const product = new ProductStore();
 
 const index = async (req: Request, res: Response) => {
     try {
-        const users = await user.index()
-        res.status(200).json(users)
+        const products = await product.index()
+        res.status(200).json(products)
     } catch (error) {
         console.log(error)
         res.status(400)
@@ -15,8 +15,8 @@ const index = async (req: Request, res: Response) => {
 
 const show = async (req: Request, res: Response) => {
     try {
-        const user_info = await user.show(req.params.id);
-        res.status(200).json(user_info);
+        const product_info = await product.show(req.params.id);
+        res.status(200).json(product_info);
     } catch (error) {
         console.log(error)
         res.status(400)
@@ -25,13 +25,13 @@ const show = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
     try {
-        const userObj: User = {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            password: req.body.password
+        const productObj: Product = {
+            name: req.body.name,
+            price: req.body.price
         }
-        const new_user = await user.create(userObj);
-        res.status(200).json(new_user);
+        const new_product = await product.create(productObj);
+        res.status(200).json(new_product);
+        
     } catch (error) {
         console.log(error)
         res.status(400)

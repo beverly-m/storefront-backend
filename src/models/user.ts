@@ -1,4 +1,11 @@
 import Client from "../database";
+import bcrypt from "bcrypt";
+import dotenv from 'dotenv';
+
+dotenv.config()
+
+const pepper = process.env.SALT_ROUNDS
+const salt = (process.env.SALT_ROUNDS as unknown) as string
 
 export type User = {
     id? : Number;
@@ -38,6 +45,7 @@ export class UserStore {
 
     async create(newUser: User): Promise<User> {
         try {
+            const hashPassword = bcrypt.hashSync(newUser.password + pepper, parseInt(salt))
             const dbConn = await Client.connect();
             const query = 'INSERT INTO users(firstname, lastname, password) VALUES ($1, $2, $3) RETURNING *';
             const data = await dbConn.query(query, [newUser.firstname, newUser.lastname, newUser.password]);
