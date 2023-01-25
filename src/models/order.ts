@@ -22,23 +22,49 @@ export class OrderStore {
             const orderProducts = new OrderProductStore
             const products = await orderProducts.show(data.rows[0].id)
             dbConn.release();
-            console.log({ order: data.rows[0], productsList: products });
+            // console.log({ order: data.rows[0], productsList: products });
             return { order: data.rows[0], productsList: products };
         } catch (error) {
             throw new Error(`Could not retrieve order ${userId}. Error: ${error}`) 
         }
     }
 
+    // Testing
     async create(order: Order): Promise<Order> {
         try {
             const dbConn = await Client.connect();
             const query = 'INSERT INTO orders(status, user_id) VALUES ($1, $2) RETURNING *';
             const data = await dbConn.query(query, [order.status, order.user_id]);
             dbConn.release();
-            console.log(data.rows[0]);
+            // console.log(data.rows[0]);
             return data.rows[0];
         } catch (error) {
             throw new Error(`Could not create order. Error: ${error}`) 
+        }
+    }
+
+    // Testing
+    async clearOrdersTable(): Promise<void> {
+    try {
+        const dbConn = await Client.connect();
+        const query = 'DELETE FROM orders';
+        await dbConn.query(query);
+        dbConn.release();
+    } catch (error) {
+        throw new Error(`Could not clear orders table. ${error}`);
+          
+    }
+   }
+
+    async resetOrdersTableSequence() {
+        try {
+            const dbConn = await Client.connect();
+            const query = 'ALTER SEQUENCE orders_id_seq RESTART WITH 1';
+            await dbConn.query(query);
+            dbConn.release();
+        } catch (error) {
+            throw new Error(`Could not reset sequence of orders table. ${error}`);
+            
         }
     }
 

@@ -2,8 +2,8 @@ import Client from "../database";
 
 export type User = {
     id? : Number;
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
     password: string;
 }
 
@@ -14,7 +14,7 @@ export class UserStore {
             const dbConn = await Client.connect();
             const query = 'SELECT * FROM users';
             const data = await dbConn.query(query);
-            console.log(data.rows);
+            // console.log(data.rows);
             dbConn.release();
             return data.rows;
         } catch (error) {
@@ -29,7 +29,7 @@ export class UserStore {
             const query = 'SELECT * FROM users where id=($1)';
             const data = await dbConn.query(query, [id]);
             dbConn.release();
-            console.log(data.rows[0]);
+            // console.log(data.rows[0]);
             return data.rows[0];
         } catch (error) {
             throw new Error(`Could not retrieve user ${id}. Error: ${error}`)
@@ -40,12 +40,36 @@ export class UserStore {
         try {
             const dbConn = await Client.connect();
             const query = 'INSERT INTO users(firstname, lastname, password) VALUES ($1, $2, $3) RETURNING *';
-            const data = await dbConn.query(query, [newUser.firstName, newUser.lastName, newUser.password]);
+            const data = await dbConn.query(query, [newUser.firstname, newUser.lastname, newUser.password]);
             dbConn.release();
-            console.log(data.rows[0]);
+            // console.log(data.rows[0]);
             return data.rows[0];            
         } catch (error) {
-            throw new Error(`Could not create user ${newUser.firstName} ${newUser.lastName}. Error: ${error}`)
+            throw new Error(`Could not create user ${newUser.firstname} ${newUser.lastname}. Error: ${error}`)
+        }
+    }
+
+    async clearUsersTable(): Promise<void> {
+    try {
+        const dbConn = await Client.connect();
+        const query = 'DELETE FROM users';
+        await dbConn.query(query);
+        dbConn.release();
+    } catch (error) {
+        throw new Error(`Could not clear users table. ${error}`);
+          
+    }
+   }
+
+    async resetUsersTableSequence() {
+        try {
+            const dbConn = await Client.connect();
+            const query = 'ALTER SEQUENCE users_id_seq RESTART WITH 1';
+            await dbConn.query(query);
+            dbConn.release();
+        } catch (error) {
+            throw new Error(`Could not reset sequence of users table. ${error}`);
+            
         }
     }
 }
@@ -53,4 +77,4 @@ export class UserStore {
 const usersql = new UserStore;
 usersql.index()
 usersql.show("1")
-// usersql.create({firstName: "Isaac", lastName: "Werimac", password: "secret"})
+// usersql.create({firstname: "Isaac", lastname: "Werimac", password: "secret"})
