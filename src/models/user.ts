@@ -48,7 +48,7 @@ export class UserStore {
             const hashPassword = bcrypt.hashSync(newUser.password + pepper, parseInt(salt))
             const dbConn = await Client.connect();
             const query = 'INSERT INTO users(firstname, lastname, password) VALUES ($1, $2, $3) RETURNING *';
-            const data = await dbConn.query(query, [newUser.firstname, newUser.lastname, newUser.password]);
+            const data = await dbConn.query(query, [newUser.firstname, newUser.lastname, hashPassword]);
             dbConn.release();
             // console.log(data.rows[0]);
             return data.rows[0];            

@@ -261,6 +261,11 @@
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   "version" "1.0.2"
 
+"base64-url@^2.3.2":
+  "integrity" "sha512-dLMhIsK7OplcDauDH/tZLvK7JmUZK3A7KiQpjNzsBrM6Etw7hzNI1tLEywqJk9NnwkgWuFKSlx/IUO7vF6Mo8Q=="
+  "resolved" "https://registry.npmjs.org/base64-url/-/base64-url-2.3.3.tgz"
+  "version" "2.3.3"
+
 "bcrypt-pbkdf@^1.0.2":
   "integrity" "sha512-qeFIXtP4MSoi6NLqO12WfqARWWuCKi2Rn/9hJLEmtB5yTNr9DqFWkJRCf2qShWzPeAMRnOgCrq0sg/KLv5ES9w=="
   "resolved" "https://registry.npmjs.org/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.2.tgz"
@@ -917,6 +922,11 @@
   "resolved" "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   "version" "7.0.0"
 
+"is.object@^1.0.0":
+  "integrity" "sha512-BdDP6tLXkf0nrCnksLobALJxkt2hmrVL6ge1oRuzGU4Lb9NpreEbhhuCcY6HMzx/qo3Dff9DJ3jf0x9+U0bNMQ=="
+  "resolved" "https://registry.npmjs.org/is.object/-/is.object-1.0.0.tgz"
+  "version" "1.0.0"
+
 "isexe@^2.0.0":
   "integrity" "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw=="
   "resolved" "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
@@ -953,6 +963,21 @@
   dependencies:
     "glob" "^7.1.6"
     "jasmine-core" "~3.99.0"
+
+"json-parse-safe@^2.0.0":
+  "integrity" "sha512-aK7Ccg46n9JkRil/M5s8ytNP9wk0Tc0TsTDVMOYxB2cGsL7XFJ1vfWsurkVZy6zR55KZ+2SWHEuzQeZK4PH6lg=="
+  "resolved" "https://registry.npmjs.org/json-parse-safe/-/json-parse-safe-2.0.0.tgz"
+  "version" "2.0.0"
+
+"json-web-token@^3.2.0":
+  "integrity" "sha512-y+zDkON17Zk7X3Hf0Rv04k8N7cP1GDRonLLL7WkdnlHl1ur2hwta4MYzxG8nWhQWRBNlIp1erszhmo/65RSTIw=="
+  "resolved" "https://registry.npmjs.org/json-web-token/-/json-web-token-3.2.0.tgz"
+  "version" "3.2.0"
+  dependencies:
+    "base64-url" "^2.3.2"
+    "is.object" "^1.0.0"
+    "json-parse-safe" "^2.0.0"
+    "xtend" "^4.0.2"
 
 "jsonwebtoken@^9.0.0":
   "integrity" "sha512-tuGfYXxkQGDPnLJ7SibiQgVgeDgfbPq2k2ICcbgqW8WxWLBAxKQM/ZCu/IT8SOSwmaYl4dpTFCW5xZv7YbbWUw=="
@@ -1890,7 +1915,7 @@
   "resolved" "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
   "version" "1.0.2"
 
-"xtend@^4.0.0":
+"xtend@^4.0.0", "xtend@^4.0.2":
   "integrity" "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="
   "resolved" "https://registry.npmjs.org/xtend/-/xtend-4.0.2.tgz"
   "version" "4.0.2"
