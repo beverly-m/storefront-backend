@@ -8,22 +8,19 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Products
 
-- Index route: '/products' [GET]
-- Show route: '/products/:id' [GET]
-- Create route [token required]: '/products' [POST]
-- [OPTIONAL] Top 5 most popular products
-- [OPTIONAL] Products by category (args: product category)
+- Index route: *'/products' [GET]*
+- Show route: *'/products/:id' [GET]*
+- Create route [token required]: *'/products' [POST]*
 
 #### Users
 
-- Index route [token required]: '/users' [GET]
-- Show route [token required]: '/users/:id' [GET]
-- Create route [token required]: '/users' [POST]
+- Index route [token required]: *'/users' [GET]*
+- Show route [token required]: *'/users/:id' [GET]*
+- Create route [token required]: *'/users' [POST]*
 
 #### Orders
 
-- Current Order by user (args: user id)[token required]: '/orders/:user_id' [GET]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+- Current Order by user (args: user id)[token required]: *'/orders/:user_id' [GET]*
 
 ## Data Shapes
 
@@ -32,7 +29,6 @@ These are the notes from a meeting with the frontend developer that describe wha
 - id
 - name
 - price
-- [OPTIONAL] category
 
 #### User
 
