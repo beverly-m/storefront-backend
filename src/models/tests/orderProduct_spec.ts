@@ -1,4 +1,3 @@
-import { OrderStore } from '../order';
 import { OrderProductStore } from '../orderProduct';
 import { ProductStore } from '../product';
 import { UserStore } from '../user';
@@ -12,7 +11,6 @@ const order_product_mock = new orderProductModelMock();
 const user = new UserStore();
 const user_mock = new userModelMock();
 const product = new ProductStore();
-const order = new OrderStore();
 const order_mock = new orderModelMock();
 const product_mock = new productModelMock();
 

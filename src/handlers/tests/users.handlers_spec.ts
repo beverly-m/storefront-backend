@@ -11,7 +11,6 @@ const user_mock = new userModelMock();
 
 dotenv.config();
 const pepper = process.env.SALT_ROUNDS;
-const salt = process.env.SALT_ROUNDS as unknown as string;
 const token_secret: Secret = process.env.TOKEN_SECRET as unknown as Secret;
 const payload = { id: 1, firstname: 'Queen', lastname: 'Wellington' };
 const user_token = jwt.sign({ user: payload }, token_secret);
@@ -127,13 +126,11 @@ describe('Test /users endpoints', () => {
     });
 
     it('POST /users/ creates new user', async () => {
-        const res = await req
-            .post('/users/')
-            .send({
-                firstname: 'Timothy',
-                lastname: 'Yolanda',
-                password: 'test789',
-            });
+        const res = await req.post('/users/').send({
+            firstname: 'Timothy',
+            lastname: 'Yolanda',
+            password: 'test789',
+        });
         const res_content = {
             new_user: {
                 id: res.body.new_user.id,

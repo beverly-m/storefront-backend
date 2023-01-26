@@ -1,22 +1,22 @@
 import Client from '../database';
 
 export type OrderProduct = {
-    id?: Number;
-    order_id: Number;
-    product_id: Number;
-    quantity: Number;
+    id?: number;
+    order_id: number;
+    product_id: number;
+    quantity: number;
 };
 
 export type OrderProductExtended = {
-    order_id: Number;
-    product_id: Number;
-    name: String;
-    price: Number | String;
-    quantity: Number;
+    order_id: number;
+    product_id: number;
+    name: string;
+    price: number | string;
+    quantity: number;
 };
 
 export class OrderProductStore {
-    async show(orderId: String): Promise<OrderProductExtended[]> {
+    async show(orderId: string): Promise<OrderProductExtended[]> {
         try {
             const dbConn = await Client.connect();
             const query =

@@ -8,7 +8,7 @@ const pepper = process.env.SALT_ROUNDS;
 const salt = process.env.SALT_ROUNDS as unknown as string;
 
 export type User = {
-    id?: Number;
+    id?: number;
     firstname: string;
     lastname: string;
     password: string;
@@ -27,7 +27,7 @@ export class UserStore {
         }
     }
 
-    async show(id: String): Promise<User> {
+    async show(id: string): Promise<User> {
         try {
             const dbConn = await Client.connect();
             const query = 'SELECT * FROM users where id=($1)';

@@ -3,7 +3,6 @@ import app from '../../server';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import { Secret } from 'jsonwebtoken';
-import { OrderStore } from '../../models/order';
 import { UserStore } from '../../models/user';
 import { ProductStore } from '../../models/product';
 import { OrderProductStore } from '../../models/orderProduct';
@@ -17,7 +16,6 @@ const req = supertest(app);
 
 const token_secret: Secret = process.env.TOKEN_SECRET as unknown as Secret;
 
-const order = new OrderStore();
 const order_mock = new orderModelMock();
 
 const user = new UserStore();

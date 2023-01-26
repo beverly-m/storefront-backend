@@ -1,14 +1,10 @@
 import Client from '../database';
-import {
-    OrderProduct,
-    OrderProductExtended,
-    OrderProductStore,
-} from './orderProduct';
+import { OrderProductExtended, OrderProductStore } from './orderProduct';
 
 export type Order = {
-    id?: Number;
+    id?: number;
     status: string;
-    user_id: Number;
+    user_id: number;
 };
 
 export type OrderDetails = {
@@ -17,7 +13,7 @@ export type OrderDetails = {
 };
 
 export class OrderStore {
-    async show(userId: String): Promise<OrderDetails> {
+    async show(userId: string): Promise<OrderDetails> {
         try {
             const dbConn = await Client.connect();
             const query = 'SELECT * FROM orders WHERE id=($1) AND status=($2)';
