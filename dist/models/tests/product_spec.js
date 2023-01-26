@@ -1,11 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const product_1 = require("../product");
+const productModelMock_1 = require("./utilities/productModelMock");
 const product = new product_1.ProductStore();
+const product_mock = new productModelMock_1.productModelMock();
 describe('Product Model', () => {
     afterEach(async () => {
-        await product.clearProductsTable();
-        await product.resetProductsTableSequence();
+        await product_mock.clearProductsTable();
+        await product_mock.resetProductsTableSequence();
     });
     it('index method should be defined', () => {
         expect(product.index).toBeDefined();

@@ -22,45 +22,5 @@ class OrderStore {
             throw new Error(`Could not retrieve order ${userId}. Error: ${error}`);
         }
     }
-    // Testing
-    async create(order) {
-        try {
-            const dbConn = await database_1.default.connect();
-            const query = 'INSERT INTO orders(status, user_id) VALUES ($1, $2) RETURNING *';
-            const data = await dbConn.query(query, [order.status, order.user_id]);
-            dbConn.release();
-            // console.log(data.rows[0]);
-            return data.rows[0];
-        }
-        catch (error) {
-            throw new Error(`Could not create order. Error: ${error}`);
-        }
-    }
-    // Testing
-    async clearOrdersTable() {
-        try {
-            const dbConn = await database_1.default.connect();
-            const query = 'DELETE FROM orders';
-            await dbConn.query(query);
-            dbConn.release();
-        }
-        catch (error) {
-            throw new Error(`Could not clear orders table. ${error}`);
-        }
-    }
-    async resetOrdersTableSequence() {
-        try {
-            const dbConn = await database_1.default.connect();
-            const query = 'ALTER SEQUENCE orders_id_seq RESTART WITH 1';
-            await dbConn.query(query);
-            dbConn.release();
-        }
-        catch (error) {
-            throw new Error(`Could not reset sequence of orders table. ${error}`);
-        }
-    }
 }
 exports.OrderStore = OrderStore;
-// const ordersql = new OrderStore;
-// ordersql.show("1")
-// productsql.create({name: "Beans", price: 25})

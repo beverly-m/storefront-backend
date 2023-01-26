@@ -7,7 +7,9 @@
     "start": "nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
     "test": "cross-env ENV=test && npx tsc && db-migrate --env test up && jasmine-ts && db-migrate --env test reset",
-    "build": "npx tsc"
+    "build": "npx tsc",
+    "prettier": "prettier src/**/*.ts --write",
+    "lint": "eslint --ignore-path .eslintignore --ext .ts ."
   },
   "author": "Udacity",
   "license": "ISC",
@@ -31,12 +33,21 @@
     "@types/jasmine": "^3.10.7",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/pg": "^7.14.7",
+    "@types/prettier": "^2.7.2",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "jasmine": "^3.99.0",
     "jasmine-spec-reporter": "^6.0.0",
     "jasmine-ts": "^0.3.0",
     "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "supertest": "^6.3.3",
     "ts-node": "^10.8.1",
     "tsc-watch": "^4.2.9"
   }

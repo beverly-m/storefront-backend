@@ -1,10 +1,10 @@
-import Client from "../database";
+import Client from '../database';
 
 export type Product = {
-    id? : Number;
+    id?: Number;
     name: string;
     price: Number | String;
-}
+};
 
 export class ProductStore {
     async index(): Promise<Product[]> {
@@ -17,7 +17,6 @@ export class ProductStore {
             return data.rows;
         } catch (error) {
             throw new Error(`Cannot retrieve products ${error}`);
-            
         }
     }
 
@@ -30,49 +29,27 @@ export class ProductStore {
             // console.log(data.rows[0]);
             return data.rows[0];
         } catch (error) {
-            throw new Error(`Could not retrieve product ${id}. Error: ${error}`)
+            throw new Error(
+                `Could not retrieve product ${id}. Error: ${error}`
+            );
         }
     }
 
     async create(newProduct: Product): Promise<Product> {
         try {
             const dbConn = await Client.connect();
-            const query = 'INSERT INTO products(name, price) VALUES ($1, $2) RETURNING *';
-            const data = await dbConn.query(query, [newProduct.name, newProduct.price]);
+            const query =
+                'INSERT INTO products(name, price) VALUES ($1, $2) RETURNING *';
+            const data = await dbConn.query(query, [
+                newProduct.name,
+                newProduct.price,
+            ]);
             dbConn.release();
-            // console.log(data.rows[0]);
-            return data.rows[0];            
+            return data.rows[0];
         } catch (error) {
-            throw new Error(`Could not create product ${newProduct.name}. Error: ${error}`)
-        }
-    }
-
-    async clearProductsTable(): Promise<void> {
-    try {
-        const dbConn = await Client.connect();
-        const query = 'DELETE FROM products';
-        await dbConn.query(query);
-        dbConn.release();
-    } catch (error) {
-        throw new Error(`Could not clear products table. ${error}`);
-          
-    }
-   }
-
-    async resetProductsTableSequence() {
-        try {
-            const dbConn = await Client.connect();
-            const query = 'ALTER SEQUENCE products_id_seq RESTART WITH 1';
-            await dbConn.query(query);
-            dbConn.release();
-        } catch (error) {
-            throw new Error(`Could not reset sequence of products table. ${error}`);
-            
+            throw new Error(
+                `Could not create product ${newProduct.name}. Error: ${error}`
+            );
         }
     }
 }
-
-// const productsql = new ProductStore;
-// productsql.index()
-// productsql.show("1")
-// productsql.create({name: "Beans", price: 25})
