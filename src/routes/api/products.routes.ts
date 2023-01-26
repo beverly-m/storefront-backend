@@ -5,6 +5,6 @@ const products = express.Router()
 
 products.get('/', index)
 products.get('/:id', show)
-products.get('/', create)
+products.post('/', create)
 
 export default products;
