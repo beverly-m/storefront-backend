@@ -1,7 +1,7 @@
 "use strict";
-exports.__esModule = true;
-var isValidParam = function (value) {
-    var valid = true;
+Object.defineProperty(exports, "__esModule", { value: true });
+const isValidParam = (value) => {
+    let valid = true;
     // check if value is a string
     if (isNaN(parseInt(value))) {
         valid = false;
@@ -18,4 +18,4 @@ var isValidParam = function (value) {
     }
     return valid;
 };
-exports["default"] = isValidParam;
+exports.default = isValidParam;
