@@ -10,7 +10,10 @@ class orderModelMock {
         try {
             const dbConn = await database_1.default.connect();
             const query = 'INSERT INTO orders(status, user_id) VALUES ($1, $2) RETURNING *';
-            const data = await dbConn.query(query, [order.status, order.user_id]);
+            const data = await dbConn.query(query, [
+                order.status,
+                order.user_id,
+            ]);
             dbConn.release();
             return data.rows[0];
         }
