@@ -7,7 +7,7 @@ The API allows access to endpoints that facilitate CRUD operations for a storefr
 
 ## Getting Started
 
-*Database Port: 5050*
+*Database Port: 5050* <br />
 *Application Port: 3000*
 
 #### Create and populate the .env file 
@@ -29,8 +29,8 @@ TOKEN_SECRET=sufficient-grace
 
 1. Connect to PostgreSQL via the terminal
 ###### Credentials
-username: postgres
-password: root
+  - ###### username: postgres 
+  - ###### password: root
 
 ```
 psql -U postgres
@@ -38,20 +38,20 @@ psql -U postgres
 
 2. Enter the password for user: 
 
-***PLACE SCREENSHOT HERE***
+![SF1](https://user-images.githubusercontent.com/71017261/214968377-4177d171-251d-4829-9d71-481d23d23e89.jpg)
 
 3. Create the database for development
 ###### Database Credentials
-database_name: storefront_dev
-password: root
+- ###### database_name: storefront_dev
+- ###### password: root
 ```
 CREATE DATABASE storefront_dev;
 ```
 
 3. Create the database for testing
 ###### Database Credentials
-database_name: storefront_test
-password: root
+- ###### database_name: storefront_test
+- ###### password: root
 ```
 CREATE DATABASE storefront_test;
 ```
