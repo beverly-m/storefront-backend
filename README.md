@@ -7,7 +7,7 @@ The API allows access to endpoints that facilitate CRUD operations for a storefr
 
 ## Getting Started
 
-*Database Port: 5050* <br />
+*Database Port: 5432* <br />
 *Application Port: 3000*
 
 #### Create and populate the .env file 
